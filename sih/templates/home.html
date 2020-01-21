@@ -1,2 +1,87 @@
-<p>hello world</p>
-<a href="{% url 'logout' %}"><b style="color:magenta">LOG OUT</b></a>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Count on Crops</title>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand|Lato|Oswald|PT+Sans|Dosis|Hind+Siliguri|Roboto+Mono|Oxygen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body>
+
+        <nav class="nav navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+              <a href="index.html" class="navbar-brand" style="font-weight: bold; font-family: Dosis";>Count on Crops</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+              <ul class="nav navbar-nav">
+                <li><a href="#profile">Home</a></li>
+                <li><a href="#about us">What Do We Do?</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+	<div class = "container-fluid profile" id="profile">
+    <button class = "login-button" style="width:auto;">Login</button>
+  </div>
+
+
+
+  <div class = "container">
+  <section class="bg-image-2" id="about us">
+    <div class="container-fluid">
+      <h1 class = "title">What does this app do?</h1>
+      <p style="font-size: 20px"> Crop phenological parameters, such as the start and end time of the crop growth, the total length of the growing season, time of peak vegetation and rate of greening and senescence are important for planning crop management and crop diversifi cation/intensifi cation. Multi-temporal remote sensing data provides opportunity to characterize the crop phenology at regional level.</p>
+      <br/>
+      <p style = "font-size: 20px">The Advanced Wide Field Sensor (AWiFS) operates in three spectral bands in VNIR and one band in SWIR with 56 metre spatial resolution and a combined swath of 730 km achieved through two AWiFS cameras. The catalog contains the orthorectified multi-spectral AWiFS data. The ortho-rectification process is carried out for correcting Terrain relief errors, Scale variation, Sensor attitude/ orientation and Internal errors.</p>
+    </div>
+  </section>
+</div>
+
+  
+
+  <div class="container" id="contact" style="padding: 10px; font-family: Dosis;">
+    <div style="text-align:center;">
+      <h2 class="title">Contact Us!</h2>
+    </div>
+      <div class="column" style="color: black;">
+        <h3 style="font-size: 30px; font-weight:bold">Who we are</h3>
+        <p style="font-size: 20px"> Chaitany Pandiya, Chetan Agarwal, Harsh Prakash Gupta, Madhumitha Nara, Shubham Agarwal, Siddharth Singh</p>
+
+        <p style="font-size: 20px">National Institute of Technology, Karnataka - Mangaluru 575025</p>
+    </div>
+  </div>
+
+
+
+  <footer class="" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-7 footer-copyright" style="font-family: Dosis;">
+          © Madhumitha Nara - All rights reserved
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
+

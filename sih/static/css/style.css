@@ -1,0 +1,62 @@
+.container-fluid {
+  padding-top: 150px;
+  padding-bottom: 200px;
+}
+
+.profile
+{
+	background-image: URL("../img/crops.jpg");
+	background-size: cover;
+	color: white;
+	text-align: center;
+}
+
+.login-button {
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+.login-button:hover {
+  opacity: 0.8;
+}
+
+.title
+{
+	font-size: 100px;
+	padding-top: 20px;
+	padding-bottom: 80px;
+	font-family: 'Oswald', sans-serif;
+	letter-spacing: 3px;
+	text-align: center;
+}
+
+.cell-white
+{
+	background-color: #ffffff;
+	color: #474e5d;
+}
+
+.cell-black
+{
+	background-color: #474e5d; 
+	color: #ffffff;
+}
+
+.cell
+{
+	padding: 30px 30px 30px 30px;
+}
+
+.cell-content
+{
+	padding: 20px 20px 20px 20px;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+}
+
