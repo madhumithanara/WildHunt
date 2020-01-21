@@ -12,9 +12,20 @@ for root, dirs, files in os.walk("."):
     for filename in files:
         filenames.append(filename)
 #import bands as separate 1 band raster
-for i in range(0,len(filenames),2):
-  # print(filenames[i])
-  # print(filenames[i+1])
+
+results_kharif = []
+results_zaid = []
+results_rabi = []
+
+time = []
+
+for i in range(0,47,2):
+  pixels_kharif = 0
+  pixels_zaid = 0
+  pixels_rabi = 0
+  time.append(i//2)
+  print(filenames[i])
+  print(filenames[i+1])
   band4 = rasterio.open(filenames[i]) #red
   band5 = rasterio.open(filenames[i+1]) #nir
   #number of raster rows
@@ -48,10 +59,19 @@ for i in range(0,len(filenames),2):
   shape = ndvi.shape
   for i in range(0,shape[0]):
       for j in range(0,shape[1]):
-          if(ndvi[i][j]<0.2):
+          if(ndvi[i][j]<0.2 or ndvi[i][j] > 0.6):
               ndvi[i][j]=-1
-
-  #export ndvi image
+          if((ndvi[i][j]>=0.43 and ndvi[i][j] <= 0.66)):
+            pixels_kharif += 1
+          if((ndvi[i][j]>=0.23 and ndvi[i][j] <= 0.42)):
+            pixels_rabi += 1
+          if((ndvi[i][j]>=0.32 and ndvi[i][j] <= 0.57)):
+            pixels_zaid += 1
+  results_kharif.append(pixels_kharif)
+  results_rabi.append(pixels_rabi)
+  results_zaid.append(pixels_zaid)
+  
+  export ndvi image
   ndviImage = rasterio.open('ndviImage'+str(i) +'.tiff','w',driver='Gtiff',
                             width=band4.width, 
                             height = band4.height, 
@@ -65,3 +85,8 @@ for i in range(0,len(filenames),2):
   ndvi = rasterio.open('ndviImage'+str(i) +'.tiff')
   fig = plt.figure(figsize=(18,12))
   plot.show(ndvi)
+plt.plot(time, results_kharif, label="NDVI_kharif")
+plt.plot(time, results_rabi, label="NDVI_rabi")
+plt.plot(time, results_zaid, label="NDVI_zaid")
+plt.legend(loc=2)
+plt.show()
