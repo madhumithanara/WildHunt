@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Crop Phenology</title>
+  <title>Crop Phenology upload</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{% static 'crophenology/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'crophenology/assets/vendors/css/vendor.bundle.base.css' %}">
@@ -43,7 +43,7 @@
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="">
+              <a class="mdc-drawer-link" href="/user/upload_data">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
                 Upload Data
               </a>
@@ -121,9 +121,6 @@
                 </ul>
               </div>
             </div>
-
-
-
             <div class="divider d-none d-md-block"></div>
             <div class="menu-button-container d-none d-md-block">
               <button class="mdc-button mdc-menu-button">
@@ -131,45 +128,6 @@
               </button>
              
             </div>
-
-
-            <div class="mdc-layout-grid">
-                <div class="mdc-layout-grid__inner">
-                  <div class="mdc-layout-grid__cell--span-12">
-                    <div class="mdc-card">
-                      <h6 class="card-title">Text Field</h6>
-                      <div class="template-demo">
-                        <div class="mdc-layout-grid__inner">
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                            <div class="mdc-text-field">
-                              <input class="mdc-text-field__input" id="text-field-hero-input">
-                              <div class="mdc-line-ripple"></div>
-                              <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-                            </div>
-                          </div>
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input class="mdc-text-field__input" id="text-field-hero-input">
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                                    <form method="POST" action = "/user/upload_data/">
-							{% csrf_token %}
-							<input type="text" name="textfield">
-
-							<button type="submit"><span class="mdc-button mdc-button--raised mdc-button--black">Upload Path</span></button>
-						</form>
            
            
             
@@ -201,15 +159,29 @@
           </div>
         </div>
       </header>
+      <div>
+  <form method="POST" action = "/user/upload_data/">
+							{% csrf_token %}
+							<input type="text" name="textfield" style="margin:500px">
 
+							<button type="submit"><span class="mdc-button mdc-button--raised mdc-button--black">Upload Path</span></button>
+						</form>
+  </div>
       <!-- partial -->
       
         <!-- partial:partials/_footer.html -->
        
         <!-- partial -->
       </div>
+      
+
+      
     </div>
+    
+
   </div>
+  
+        
   <!-- plugins:js -->
   <script src="{% static 'crophenology/assets/vendors/js/vendor.bundle.base.js' %}"></script>
   <!-- endinject -->

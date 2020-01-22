@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Charts</title>
+  <!-- plugins:css -->
+ <link rel="stylesheet" href="{% static 'crophenology/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'crophenology/assets/vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{% static 'crophenology/assets/css/demo/style.css' %}">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="{% static 'crophenology/assets/images/favicon.png' %}" />
+  <script>
+// Open the Modal
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+</head>
+<body>
+<script src="{% static 'crophenology/assets/js/preloader.js' %}"></script>
+  <div class="body-wrapper">
+    <!-- partial:../../partials/_sidebar.html -->
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
+      <div class="mdc-drawer__header">
+        <a href="/" class="brand-logo">
+          <img src="{% static 'crophenology/assets/images/logo.png' %}" alt="logo">
+        </a>
+      </div>
+      <div class="mdc-drawer__content">
+        <div class="user-info">
+         <p class="name">{{ user.username }}</p>
+          <p class="email">{{ user.email }}</p>
+        </div>
+        <div class="mdc-list-group">
+          <nav class="mdc-list mdc-drawer-menu">
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="/user/dashboard">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
+                Dashboard
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="/user/upload_data">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
+                Upload Data
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="ui-sub-menu">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                Data analytics
+                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+              </a>
+              <div class="mdc-expansion-panel" id="ui-sub-menu">
+                <nav class="mdc-list mdc-drawer-submenu">
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="/user/charts">
+                      Charts
+                    </a>
+                  </div>
+                  
+                </nav>
+              </div>
+            </div>
+           
+            
+          
+        <div class="profile-actions">
+          
+          <a href="javascript:;">Logout</a>
+        </div>
+     
+    </aside>
+    <!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:../../partials/_navbar.html -->
+      <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
+            <span class="mdc-top-app-bar__title">Greetings {{ user.username }}!</span>
+            
+          </div>
+          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
+            <div class="menu-button-container menu-profile d-none d-md-block">
+              <button class="mdc-button mdc-menu-button">
+                <span class="d-flex align-items-center">
+                  <span class="figure">
+                     <img src="{% static 'crophenology/assets/images/faces/face1.jpg' %}" alt="user" class="user">
+                  </span>
+                  <span class="user-name">{{ user.username }}</span>
+                </span>
+              </button>
+           
+            </div>
+           
+      
+            <div class="menu-button-container d-none d-md-block">
+              <button class="mdc-button mdc-menu-button">
+                <i class="mdi mdi-arrow-down-bold-box"></i>
+              </button>
+              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-lock-outline text-primary"></i>
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                      <h6 class="item-subject font-weight-normal">Lock screen</h6>
+                    </div>
+                  </li>
+                  <li class="mdc-list-item" role="menuitem">
+                    <div class="item-thumbnail item-thumbnail-icon-only">
+                      <i class="mdi mdi-logout-variant text-primary"></i>                      
+                    </div>
+                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                       <h6 class="item-subject font-weight-normal"><a href="{% url 'logout' %}">Logout</a></h6>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- partial -->
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">NDVI Chart 1</h6>
+                  <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">NDVI Chart 2</h6>
+                  <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">NDVI Chart 3</h6>
+                 <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">Doughnut chart</h6>
+                  <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">Pie chart</h6>
+                  <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-card">
+                  <h6 class="card-title">Scatter chart</h6>
+                  <img src="img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                </div>
+              </div>
+              <div class="slideshow-container">
+
+              <div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="img1.jpg" style="width:50%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="img1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="img1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="img1.jpg" style="width:100%">
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail image controls -->
+    <div class="column">
+      <img class="demo" src="img1.jpg" onclick="currentSlide(1)" alt="Chart1">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="img1.jpg" onclick="currentSlide(2)" alt="Chart2">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="img1.jpg" onclick="currentSlide(3)" alt="Chart3">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="img1.jpg" onclick="currentSlide(4)" alt="Chart4">
+    </div>
+  </div>
+</div>
+  <!-- Full-width images with number and caption text -->
+  
+
+            </div>
+          </div>
+        </main>
+        <!-- partial:../../partials/_footer.html -->
+
+        
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+  <!-- plugins:js -->  <script src="{% static 'crophenology/assets/vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="{% static 'crophenology/assets/vendors/chartjs/Chart.min.js' %}"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{% static 'crophenology/assets/js/material.js' %}"></script>
+  <script src="{% static 'crophenology/assets/js/misc.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'crophenology/assets/js/chartjs.js' %}"></script>
+  <!-- End custom js for this page-->
+</body>
+</html>
