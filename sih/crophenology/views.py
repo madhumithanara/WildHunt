@@ -18,6 +18,7 @@ def dashboard(request):
 def upload_data(request):
     if request.method == "POST":
         folder_path = request.POST.get('textfield', None)
+        print(folder_path)
         return HttpResponseRedirect('/user/dashboard')
     else:
         return render(request,'upload.html')

@@ -163,6 +163,13 @@
                     </div>
                 </div>
             </div>
+
+                                    <form method="POST" action = "/user/upload_data/">
+							{% csrf_token %}
+							<input type="text" name="textfield">
+
+							<button type="submit"><span class="mdc-button mdc-button--raised mdc-button--black">Upload Path</span></button>
+						</form>
            
            
             
