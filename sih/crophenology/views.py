@@ -28,6 +28,8 @@ def upload_data(request):
         return HttpResponseRedirect('/user/dashboard')
     else:
         return render(request,'upload.html')
+def chart(request):
+    return render(request,'chart.html')
 
 def preprocess(folder_path):
 
