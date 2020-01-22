@@ -28,7 +28,7 @@ def upload_data(request):
         return HttpResponseRedirect('/user/dashboard')
     else:
         return render(request,'upload.html')
-def chart(request):
+def charts(request):
     return render(request,'chart.html')
 
 def preprocess(folder_path):
@@ -148,6 +148,7 @@ def preprocess(folder_path):
   plt.plot(time, results_zaid, label="NDVI_zaid")
   plt.legend(loc=2)
   plt.savefig('ndvicomp.png',dpi=300)
+  plt.close()
   plt.plot(time, results_kharife, label="EVI2_kharif")
   plt.plot(time, results_rabie, label="EVI2_rabi")
   plt.plot(time, results_zaide, label="EVI2_zaid")

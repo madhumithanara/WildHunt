@@ -13,7 +13,7 @@ for root, dirs, files in os.walk("."):
 
 print(len(filenames))
 
-!pip install rasterio
+
 
 #import required libraries
 import rasterio
