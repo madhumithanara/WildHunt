@@ -14,3 +14,10 @@ def dashboard(request):
     else:
         error="not signed in"
         return render(request, 'myprofile.html', {'error':error,})
+
+def upload_data(request):
+    if request.method == "POST":
+        folder_path = request.POST.get('textfield', None)
+        return HttpResponseRedirect('/user/dashboard')
+    else:
+        return render(request,'upload.html')
