@@ -38,7 +38,8 @@ def preprocess(folder_path):
       for filename in files:
           filenames.append(filename)
   #import bands as separate 1 band raster
-
+  filenames.sort()
+  print(filenames)
   results_kharif = []
   results_zaid = []
   results_rabi = []
@@ -139,7 +140,7 @@ def preprocess(folder_path):
     # plot.show(ndvi)
   os.chdir('../')  
   print (str(os.path.dirname(os.path.realpath(__file__))))
-  return str(os.path.dirname(os.path.realpath(__file__)))
+  
   plt.plot(time, results_kharif, label="NDVI_kharif")  
   plt.plot(time, results_rabi, label="NDVI_rabi")
   plt.plot(time, results_zaid, label="NDVI_zaid")
@@ -150,6 +151,8 @@ def preprocess(folder_path):
   plt.plot(time, results_zaide, label="EVI2_zaid")
   plt.legend(loc=2)
   plt.savefig('evicomp.png',dpi=300)
+
+  return str(os.path.dirname(os.path.realpath(__file__)))
   
 
 
